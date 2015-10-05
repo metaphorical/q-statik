@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="Header">
+        <h1>My blog</h1>
+    </div>
+
+    <div class="Posts">
+        <div class="Posts-list">
+            {% for post in posts %}
+                <div class="Posts-post">
+                    <span class="date">{{ post.date | date }}</span>
+                    <a href="{{ post.url }}" class="title">
+                        {{ post.title }} {% if post.subtitle %}, {{post.subtitle}} {% endif %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

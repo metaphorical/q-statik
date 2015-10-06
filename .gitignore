@@ -1,3 +1,5 @@
 flask
 .ropeproject
 .idea
+*.pyc
+/lib/**/*.pyc

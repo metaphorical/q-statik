@@ -3,3 +3,4 @@ flask
 .idea
 *.pyc
 /lib/**/*.pyc
+/build/

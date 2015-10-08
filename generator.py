@@ -1,4 +1,7 @@
 import sys
+import SimpleHTTPServer
+import SocketServer
+import os
 
 from flask import Flask, render_template
 from flask.ext.frozen import Freezer
@@ -32,6 +35,16 @@ if __name__ == '__main__':
             If we pass build argument, run freeze method to build static content.
         """
         freezer.freeze()
+    elif len(sys.argv) > 1 and sys.argv[1] == 'serve-static':
+        """
+            serve static content built by 'build' task
+        """
+        Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+        os.chdir("build/")
+        httpd = SocketServer.TCPServer(("", 8081), Handler)
+
+        print "serving at port 8081"
+        httpd.serve_forever()
     else:
         """
             Here, I set it in dev-like environment (watching posts and source files and stuff)

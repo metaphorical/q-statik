@@ -8,19 +8,20 @@ from werkzeug import cached_property
 
 from ..modules.feedict import SortedDict
 
-POSTS_FILE_EXTENSION = '.md'
-
 class Feed(object):
-    def __init__(self, app, root_dir='', file_ext=POSTS_FILE_EXTENSION):
+    def __init__(self, app, root_dir='', file_ext=None):
         self.root_dir = root_dir
-        self.file_ext = file_ext
+        self.file_ext = file_ext if file_ext is not None else app.config['POSTS_FILE_EXTENSION']
         self._app = app
         self._cache = SortedDict(key = lambda p: p.date, reverse=True)
         self._initialize_cache()
 
     @property
     def posts(self):
-        return self._cache.values()
+        if self._app.debug:
+            return self._cache.values()
+        else:
+            return [post for post in self._cache.values() if post.published]
 
     def get_post(self, path):
         """Returns post object of raises 404
@@ -50,6 +51,7 @@ class Post(object):
     def __init__(self, path, root_dir=''):
         self.urlpath = os.path.splitext(path.strip('/'))[0]
         self.filepath = os.path.join(root_dir, path.strip('/'))
+        self.published = False
         self._initialize_metadata()
 
     @cached_property

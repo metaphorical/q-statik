@@ -1,10 +1,9 @@
-title: New Hope
-subtitle: Ones upon a time in the galaxy far far away
-date: 1977-05-25
-published: True
+title: Force Awakened
+subtitle: Now, how about more merchendise?
+date: 2015-12-25
 
 
-# New Hope
+# Force awakens
 
 ## Ones upon a time in the galaxy far far away
 

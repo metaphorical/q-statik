@@ -9,6 +9,7 @@
         <div class="Posts-list">
             {% for post in posts %}
                 <div class="Posts-post">
+                    {% if not post.published %} <strong>[DRAFT]</strong> {% endif %}
                     <span class="date">{{ post.date | date }}</span>
                     <a href="{{ post.url }}" class="title">
                         {{ post.title }} {% if post.subtitle %}, {{post.subtitle}} {% endif %}

@@ -47,7 +47,7 @@ if __name__ == '__main__':
         #serve static content built by 'build' task
         Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
         os.chdir("build/")
-        httpd = SocketServer.TCPServer(("", 8082), Handler)
+        httpd = SocketServer.TCPServer(("", 8081), Handler)
 
         print "serving at port 8081"
         httpd.serve_forever()

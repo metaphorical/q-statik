@@ -1,3 +1,15 @@
+/*Very important!*/
+.codehilite {
+	clear:both;
+}
+.codehilite pre {
+	padding: 5px;
+	background: #272822;
+	color: #f8f8f2;
+}
+
+/*End of very important*/
+
 body {
 	font: monospace;
 	background-color: #ededed;

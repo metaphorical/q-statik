@@ -58,7 +58,7 @@ class Post(object):
     def html(self):
         with open(self.filepath, 'r') as fin:
             content = fin.read().split('\n\n', 1)[1].strip()
-            return markdown.markdown(content)
+            return markdown.markdown(content, extensions=['codehilite'])
 
     @property
     def url(self):

@@ -34,10 +34,18 @@ if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'build':
         """
             run with 'build' to build static
+
+            static content that has been built is by default placed into 'build' folder
+
+            optionally, other folder can be passed as prameter after 'build'
         """
         #If we pass build argument, run freeze method to build static content.
         if app.config['DEBUG'] and not app.config['BUILD_DRAFTS']:
             app.config['DEBUG'] = False
+
+        if len(sys.argv) > 2:
+            app.config['FREEZER_DESTINATION'] = sys.argv[2]
+
         freezer.freeze()
 
     elif len(sys.argv) > 1 and sys.argv[1] == 'serve-static':

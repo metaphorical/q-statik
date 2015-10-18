@@ -6,7 +6,7 @@ import os
 from flask import Flask, render_template
 from flask.ext.frozen import Freezer
 
-from lib.static_feed.static_feed import Feed
+from lib.static_feed.feed import Feed
 
 app = Flask(__name__)
 app.config.from_pyfile('feed_config.py')

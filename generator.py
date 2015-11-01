@@ -2,17 +2,22 @@ import sys
 import SimpleHTTPServer
 import SocketServer
 import os
+import json
 
 from flask import Flask, render_template
 from flask.ext.frozen import Freezer
 
 from lib.static_feed.feed import Feed
 
+with open('config.json') as config_file:
+    config = json.load(config_file)
+
 app = Flask(__name__)
-app.config.from_pyfile('feed_config.py')
+app.config.update(config['feed_config'])
 
 blog = Feed(app, root_dir = 'posts')
 freezer = Freezer(app)
+
 
 @app.template_filter('date')
 def format_date(value, format='%B %d, %Y'):
@@ -39,7 +44,7 @@ if __name__ == '__main__':
 
             optionally, other folder can be passed as prameter after 'build'
         """
-        #If we pass build argument, run freeze method to build static content.
+        # If we pass build argument, run freeze method to build static content.
         if app.config['DEBUG'] and not app.config['BUILD_DRAFTS']:
             app.config['DEBUG'] = False
 
@@ -52,7 +57,7 @@ if __name__ == '__main__':
         """
             run with 'serve-static' to run simple server on port 8081 to serve generated static content
         """
-        #serve static content built by 'build' task
+        # serve static content built by 'build' task
         Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
         os.chdir("build/")
         httpd = SocketServer.TCPServer(("", 8081), Handler)

@@ -1,0 +1,10 @@
+{
+  "name": "statiQ",
+  "author": "Rastko",
+  "feed_config" : {
+    "DEBUG" : true,
+    "BUILD_DRAFTS" : false,
+    "POSTS_FILE_EXTENSION" : ".md",
+    "FREEZER_BASE_URL" : "http://localhost"
+  }
+}

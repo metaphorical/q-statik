@@ -1,5 +1,9 @@
 argh==0.26.1
+coverage==4.0.1
+coveralls==1.1
+docopt==0.6.2
 Flask==0.10.1
+freeze==1.0.9
 Frozen-Flask==0.11
 itsdangerous==0.24
 Jinja2==2.8
@@ -10,6 +14,8 @@ nose-watch==0.9.1
 pathtools==0.1.2
 Pygments==2.0.2
 PyYAML==3.11
+requests==2.8.1
+six==1.10.0
 watchdog==0.8.3
 Werkzeug==0.10.4
 wheel==0.24.0

@@ -1,6 +1,7 @@
-hyde
 .ropeproject
 .idea
 *.pyc
 /lib/**/*.pyc
 /build/
+/static/node_modules/
+/env-statiq/
